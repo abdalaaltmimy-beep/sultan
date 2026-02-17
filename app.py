@@ -15,7 +15,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.markdown("<h1 style='text-align: center; color: #D4AF37;'>👑 SULTAN | GX1GX1</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #D4AF37;'>👑 SULTAN | x_319</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center;'>نظام الرشق الملكي المتكامل</p>", unsafe_allow_html=True)
 
 # خيارات الخدمة
