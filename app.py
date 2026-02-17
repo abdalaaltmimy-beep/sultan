@@ -1,32 +1,58 @@
 import streamlit as st
-import requests
-import random
-from time import sleep
 
-# إعدادات واجهة السلطان
-st.set_page_config(page_title="SULTAN PANEL", page_icon="👑")
+# 1. إعدادات الصفحة (هذا هو الكود الذي يحدد الاسم والأيقونة)
+st.set_page_config(
+    page_title="تطبيق سلطان | SULTAN", # اسم التطبيق عند الإضافة للشاشة
+    page_icon="👑",                  # أيقونة التطبيق (يمكنك وضع رابط صورة هنا لاحقاً)
+    layout="centered",               # لجعل الواجهة متناسقة مع شاشة الهاتف
+    initial_sidebar_state="collapsed"
+)
 
+# 2. تصميم الواجهة (CSS) لتحسين مظهر التطبيق
 st.markdown("""
     <style>
-    .stApp { background-color: #0e1117; color: #D4AF37; }
-    .stButton>button { width: 100%; background: linear-gradient(45deg, #D4AF37, #8A6E2F); color: black; font-weight: bold; border-radius: 10px; border: none; height: 3em; }
-    input { text-align: center; background-color: #1a1a1a !important; color: white !important; }
-    div[data-baseweb="select"] { background-color: #1a1a1a !important; }
+    /* إخفاء شريط الأدوات العلوي الخاص بـ streamlit لجعله يبدو كتطبيق */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    
+    .main {
+        background-color: #1a1a1a;
+    }
+    .stButton>button {
+        width: 100%;
+        border-radius: 10px;
+        height: 3em;
+        background-color: #D4AF37;
+        color: black;
+        font-weight: bold;
+        border: none;
+    }
+    h1 {
+        text-align: center;
+        color: #D4AF37;
+        font-family: 'Arial';
+    }
+    p {
+        text-align: center;
+        color: #D4AF37;
+    }
     </style>
     """, unsafe_allow_html=True)
 
-st.markdown("<h1 style='text-align: center; color: #D4AF37;'>👑 SULTAN | x_319</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>نظام الرشق الملكي المتكامل</p>", unsafe_allow_html=True)
+# 3. محتوى التطبيق
+st.markdown("<h1>👑 SULTAN | x_319</h1>", unsafe_allow_html=True)
+st.markdown("<p>نظام الرشق الملكي المتكامل</p>", unsafe_allow_html=True)
 
-# خيارات الخدمة
-option = st.selectbox("اختر نوع الخدمة:", ["إعجابات يوتيوب", "متابعين تيك توك", "مشاهدات إنستغرام"])
-url = st.text_input("ضع الرابط هنا 👇", placeholder="https://...")
+option = st.selectbox(
+    'اختر نوع الخدمة:',
+    ['إعجابات يوتيوب', 'مشاهدات إنستغرام', 'متابعين تيك توك']
+)
 
-if st.button("بدء العملية الملكية"):
-    if url:
-        with st.spinner('جاري معالجة طلبك بالسيرفرات...'):
-            sleep(3)
-            st.success(f"✅ تم بدء إرسال {option} بنجاح!")
-            st.balloons()
+link = st.text_input('👇 ضع الرابط هنا', placeholder='https://...')
+
+if st.button('بدء العملية الملكية'):
+    if link:
+        st.success(f'تم استلام طلبك لخدمة: {option}')
     else:
-        st.warning("⚠️ يرجى إدخال الرابط أولاً")
+        st.error('الرجاء وضع الرابط أولاً!')
